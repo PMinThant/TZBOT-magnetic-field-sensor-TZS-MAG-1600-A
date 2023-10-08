@@ -10,7 +10,6 @@ def talker():
     rate = rospy.Rate(10) # 10hz
     ser = serial.Serial('/dev/ttyUSB0', 115200)
     data = ser.read(size=14)
-    #data = ser.read(ser.inWaiting())
     print(data)
     listTestByte = list(data)
     print(listTestByte)   
@@ -24,10 +23,10 @@ def talker():
             ft = True
         if ft == True:
             lbyte[i] = data   
-            # if i == 11:
-            #     print ("".join(map("{0:08b}".format, map(ord, list(data))))),
-            # if i == 12:
-            #     print ("".join(map("{0:08b}".format, map(ord, list(data)))))
+            if i == 11:
+                print ("".join(map("{0:08b}".format, map(ord, list(data))))),
+            if i == 12:
+                print ("".join(map("{0:08b}".format, map(ord, list(data)))))
             if i == 13:
                 i = 0
                 ft = False
